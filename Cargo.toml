@@ -1,0 +1,27 @@
+[package]
+name = "leader-schedule-bench"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+solana-pubkey = "4.2.0"
+solana-rpc-client = "4.0.0-rc.0"
+hashbrown = "0.17.0"
+solana-clock = "3.0.1"
+solana-epoch-schedule = "3.1.0"
+anyhow = "1"
+itertools = "0.14.0"
+
+[dev-dependencies]
+criterion = { version = "0.5", features = ["html_reports"] }
+dotenvy = "0.15.7"
+tokio = { version = "1.52.1", features = ["full"]}
+
+[profile.bench]
+opt-level = 3
+codegen-units = 1
+lto = "fat"
+
+[[bench]]
+name = "leader_schedule"
+harness = false
